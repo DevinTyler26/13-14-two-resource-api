@@ -6,7 +6,7 @@ import { startServer, stopServer } from '../lib/server';
 import CarMake from '../model/carMake';
 import pCreateMockMake from './lib/carMakeMock';
 
-const apiUrl = `http://localhost:${process.env.PORT}/api/make`;
+const apiUrl = `http://localhost:${process.env.PORT}/api/carMake`;
 
 beforeAll(startServer);
 afterAll(stopServer);

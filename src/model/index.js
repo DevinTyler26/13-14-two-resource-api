@@ -9,7 +9,7 @@ const modelPath = `${__dirname}`;
 export default () => {
   return pReadDirectory(modelPath)
     .then((files) => {
-      const newFiles = files.filter(file => file !== 'index.js').map(file => `.'${file}`);
+      const newFiles = files.filter(file => file !== 'index.js').map(file => `./${file}`);
       const modelMap = newFiles.reduce((storage, currFile) => {
       const file = require(currFile) /*eslint-disable-line*/
         const ifMongooseModel = file.default && file.default.modelName;
