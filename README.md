@@ -75,7 +75,7 @@ mockdata = {
         _id: '12534',
         name: 'audi',
         country: 'Germany'
-        students: [17424553,  17423153],
+        models: [17424553,  17423153],
     },
     model: {
         name: 'RS4',
