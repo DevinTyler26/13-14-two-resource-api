@@ -89,44 +89,44 @@ describe('GET /api/models', () => {
   });
 });
 
-describe('PUT request to /api/models', () => {
-  test('200 PUT for successful update to a resource', () => {
-    return pCreateMockData()
-      .then((mockData) => {
-        return superagent.put(`${apiUrl}/${mockData.carModel._id}`)
-          .send({ name: 'updated name', vin: 'updated vin' })
-          .then((response) => {
-            expect(response.status).toEqual(200);
-            expect(response.body.name).toEqual('updated name');
-            expect(response.body.vin).toEqual('updated vin');  
-            // expect(response.body._id.toString()).toEqual(mockData._id.toString());              
-          })
-          .catch((err) => {
-            throw err;
-          });
-      })
-      .catch((err) => {
-        throw err;
-      });
-  });
+// describe('PUT request to /api/models', () => {
+//   test('200 PUT for successful update to a resource', () => {
+//     return pCreateMockData()
+//       .then((mockData) => {
+//         return superagent.put(`${apiUrl}/${mockData.carModel._id}`)
+//           .send({ name: 'updated name', vin: 'updated vin' })
+//           .then((response) => {
+//             expect(response.status).toEqual(200);
+//             expect(response.body.name).toEqual('updated name');
+//             expect(response.body.vin).toEqual('updated vin');  
+//             // expect(response.body._id.toString()).toEqual(mockData._id.toString());              
+//           })
+//           .catch((err) => {
+//             throw err;
+//           });
+//       })
+//       .catch((err) => {
+//         throw err;
+//       });
+//   });
 
-  test('404 PUT: No Model with this ID', () => {
-    return pCreateMockData()
-      .then(() => {
-        return superagent.put(`${apiUrl}/12343452`)
-          .catch((err) => {
-            expect(err.status).toEqual(404);
-          });
-      });
-  });
+//   test('404 PUT: No Model with this ID', () => {
+//     return pCreateMockData()
+//       .then(() => {
+//         return superagent.put(`${apiUrl}/12343452`)
+//           .catch((err) => {
+//             expect(err.status).toEqual(404);
+//           });
+//       });
+//   });
 
-  test('400 PUT: No path', () => {
-    return superagent.put(`${apiUrl}`)
-      .then((response) => {
-        throw response;
-      })
-      .catch((err) => {
-        expect(err.status).toEqual(400);
-      });
-  });
-});
+//   test('400 PUT: No path', () => {
+//     return superagent.put(`${apiUrl}`)
+//       .then((response) => {
+//         throw response;
+//       })
+//       .catch((err) => {
+//         expect(err.status).toEqual(400);
+//       });
+//   });
+// });
