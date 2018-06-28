@@ -31,12 +31,25 @@ describe('POST /api/make', () => {
         throw err;
       });
   });
+
   test('400 post: No name', () => {
     return superagent.post(apiUrl)
       .send()
       .catch((err) => {
         console.log('INSIDE 400 ERROR FOR NO ID');
         expect(err.status).toEqual(400);
+      });
+  });
+
+  test('409 POST for duplicate POST of a Car Make', () => {
+    return superagent.post(apiUrl)
+      .send(mockResource)
+      .send(mockResource)
+      .then(() => {
+        return undefined;
+      })
+      .catch((err) => {
+        expect(err.status).toEqual(409);
       });
   });
 });

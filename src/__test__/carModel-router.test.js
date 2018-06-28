@@ -53,6 +53,24 @@ describe('POST /api/models', () => {
           });
       });
   });
+  test('409 POST for successful posting of a model', () => {
+    return pCreateMockData()
+      .then((mockData) => {
+        const mockModel = {
+          name: faker.name.firstName(),
+          vin: faker.random.number(100000000, 999999999),
+          carMakeId: mockData.carMake._id,
+        };
+        return superagent.post(apiUrl)
+          .send(mockModel)
+          .send(mockModel)          
+          .then(() => {
+          })
+          .catch((err) => {
+            expect(err.status).toEqual(409);
+          });
+      });
+  });
 });
 
 describe('GET /api/models', () => {

@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/DevinTyler26/13-14-two-resource-api.svg?branch=lab-14)](https://travis-ci.org/DevinTyler26/13-14-two-resource-api)
 ![CF](https://camo.githubusercontent.com/70edab54bba80edb7493cad3135e9606781cbb6b/687474703a2f2f692e696d6775722e636f6d2f377635415363382e706e67) 13: Two-Resource Resource Mongo and Express API
 ===
 
@@ -63,10 +64,8 @@
 ## Documentation
 - carMakeRouter.post('/api/carMake/) this will post a new car make to the database
 - carMakeRouter.get('/api/carMake/:id?') this will go to the db and search for a car make based on the given id
-- carMakeRouter.put('/api/carMake/:id?') this will find a car in the db based on the given id and change properties
 - modelRouter.post('/api/models/) this will post a new car model to the database
 - modelRouter.get('/api/models/:id?') this will go to the db and search for a car based on the given id
-- modelRouter.put('/api/models/:id?') this will find a car model in the db based on the given id and change properties
 
 ## GET api/carMake/{id} && api/make/{id}
 ``` 
