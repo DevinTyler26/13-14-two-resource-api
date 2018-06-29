@@ -28,15 +28,18 @@ app.all('*', (req, res) => {
 });
 
 const startServer = () => {
-  return mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-      server = app.listen(PORT, () => {
-        console.log('Server is ON:', PORT);
+  async function asyncCall() {
+    await mongoose.connect(process.env.MONGODB_URI)
+      .then(() => {
+        server = app.listen(PORT, () => {
+          console.log('Server is ON:', PORT);
+        });
+      })
+      .catch((err) => {
+        throw err;
       });
-    })
-    .catch((err) => {
-      throw err;
-    });
+  }
+  asyncCall();
 };
 
 const stopServer = () => {
