@@ -40,4 +40,42 @@ modelRouter.get('/api/:model/:id?', (req, res, next) => {
   return undefined;
 });
 
+modelRouter.get('/api/:model', (req, res, next) => {
+  const Model = req.model;
+  Model.init()
+    .then(() => {
+      return Model.find({});
+    })
+    .then((foundCarMakes) => {
+      logger.log(logger.INFO, `Car Make Router found the model ${JSON.stringify(foundCarMakes)}`);
+      return res.json(foundCarMakes);
+    })
+    .catch(next);
+});
+
+
+modelRouter.put('/api/:model/:id?', (req, res, next) => {
+  if (!req.params.id) {
+    logger.log(logger.INFO, 'Make Router PUT api/models: Responding with 400 code for no id passed in');
+    return res.sendStatus(400);
+  }
+  const Model = req.model;
+
+  const options = {
+    new: true,
+    runValidators: true,
+  };
+
+  Model.init()
+    .then(() => {
+      return Model.findByIdAndUpdate(req.params.id, req.body, options);
+    })
+    .then((updatedModel) => {
+      logger.log(logger.INFO, `Make Router PUT responding with a 200 status code for successful update to car: ${updatedModel}`);
+      return res.json(updatedModel);
+    })
+    .catch(next);
+  return undefined;
+});
+
 export default modelRouter;
