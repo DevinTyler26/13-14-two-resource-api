@@ -20,6 +20,18 @@ carMakeRouter.post('/api/make', (req, res, next) => {
   return undefined;
 });
 
+carMakeRouter.get('/api/make', (req, res, next) => {
+  CarMake.init()
+    .then(() => {
+      return CarMake.find({});
+    })
+    .then((foundCarMakes) => {
+      logger.log(logger.INFO, `Car Make Router found the model ${JSON.stringify(foundCarMakes)}`);
+      res.json(foundCarMakes);
+    })
+    .catch(next);
+});
+
 carMakeRouter.get('/api/make/:id?', (req, res, next) => {
   CarMake.init()
     .then(() => {

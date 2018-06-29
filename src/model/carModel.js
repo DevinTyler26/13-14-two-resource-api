@@ -22,6 +22,10 @@ const modelSchema = mongoose.Schema({
     required: true,
     ref: 'carMake',
   },
+  _carMakeName: {
+    type: mongoose.Schema.Types.ObjectId.name,
+    ref: 'carMake',
+  },
 }, { timestamps: true });
 
 const skipInit = process.env.NODE_ENV === 'development';
