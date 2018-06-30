@@ -22,6 +22,11 @@ const modelSchema = mongoose.Schema({
     required: true,
     ref: 'carMake',
   },
+  _carMakeName: {
+    default: 'test',
+    type: String,
+    ref: 'carMake',
+  },
 }, { timestamps: true });
 
 const skipInit = process.env.NODE_ENV === 'development';
@@ -49,4 +54,8 @@ const modelPostHook = (document, done) => {
 };
 
 modelSchema.pre('save', modelPreHook);
+// modelSchema.pre('findOne', function preHookCallback(done) {
+//   this.populate('_carMakeName');
+//   done();
+// });
 modelSchema.post('remove', modelPostHook);

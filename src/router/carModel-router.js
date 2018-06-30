@@ -20,6 +20,18 @@ modelRouter.post('/api/models', (req, res, next) => {
     .catch(next);
 });
 
+// modelRouter.get('/api/models', (req, res, next) => {
+//   Model.init()
+//     .then(() => {
+//       return Model.find({});
+//     })
+//     .then((foundCarModels) => {
+//       logger.log(logger.INFO, `Car Model Router found the model ${JSON.stringify(foundCarModels)}`);
+//       res.json(foundCarModels);
+//     })
+//     .catch(next);
+// });
+
 modelRouter.get('/api/models/:id?', (req, res, next) => {
   if (!req.params.id) {
     return next(new HttpErrors(400, 'Did not enter an ID'));
