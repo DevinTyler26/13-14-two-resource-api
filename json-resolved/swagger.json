@@ -1,0 +1,13 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "401 Mid Term",
+    "version" : "1.0.0",
+    "title" : "myGarage"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/DevinTyler/myGarage/1.0.0",
+  "schemes" : [ "https" ],
+  "paths" : { },
+  "definitions" : { }
+}
